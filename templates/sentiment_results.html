@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Matches for {{ sentiment }}{% endblock %}
+{% block content %}
+  <h1>Places that fit "{{ sentiment|capitalize }}"</h1>
+  <p class="muted">Budget: {{ budget|capitalize }} &middot; {{ people }} people &middot; {{ nights }} nights</p>
+
+  {% if not matches %}
+    <p>No exact matches yet - try a different mood or budget, or add more places to <code>data/places.json</code>.</p>
+  {% endif %}
+
+  <div class="place-grid">
+    {% for place in matches %}
+      <div class="place-card">
+        <h3>{{ place.name }}</h3>
+        <p class="muted">{{ place.destination_title }} &middot; {{ place.budget|capitalize }} budget</p>
+        <p>{{ place.desc }}</p>
+        <p class="small">Best time: {{ place.best_time }} &middot; Entry: {% if place.entry_fee %}Rs {{ place.entry_fee }}{% else %}Free{% endif %}</p>
+        <form method="POST" action="{{ url_for('plan_by_destination') }}">
+          <input type="hidden" name="destination" value="{{ place.destination }}">
+          <input type="hidden" name="sentiment" value="{{ sentiment }}">
+          <input type="hidden" name="budget" value="{{ budget }}">
+          <input type="hidden" name="people" value="{{ people }}">
+          <input type="hidden" name="nights" value="{{ nights }}">
+          <button type="submit" class="btn-secondary">See full {{ place.destination_title }} plan</button>
+        </form>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

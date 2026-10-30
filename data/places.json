@@ -1,0 +1,80 @@
+{
+  "sentiments": ["relaxing", "adventure", "romantic", "family", "spiritual", "nightlife", "nature", "cultural", "food", "shopping"],
+  "budgets": ["low", "medium", "high"],
+  "destinations": {
+    "goa": {
+      "title": "Goa",
+      "weather_city": "Panaji,IN",
+      "places": [
+        {"name": "Baga Beach", "sentiments": ["nightlife", "relaxing"], "budget": "low", "entry_fee": 0, "best_time": "Nov-Feb", "desc": "Popular beach known for water sports, beach shacks and lively nightlife along the shore."},
+        {"name": "Calangute Beach", "sentiments": ["family", "relaxing"], "budget": "low", "entry_fee": 0, "best_time": "Nov-Feb", "desc": "Goa's largest beach, buzzing with markets and family-friendly stretches of sand."},
+        {"name": "Fort Aguada", "sentiments": ["cultural", "romantic"], "budget": "low", "entry_fee": 0, "best_time": "Oct-Mar", "desc": "17th-century Portuguese fort with a lighthouse and sweeping sea views, popular at sunset."},
+        {"name": "Basilica of Bom Jesus", "sentiments": ["spiritual", "cultural"], "budget": "low", "entry_fee": 0, "best_time": "Year-round", "desc": "UNESCO World Heritage church holding the relics of St. Francis Xavier."},
+        {"name": "Dudhsagar Falls", "sentiments": ["adventure", "nature"], "budget": "medium", "entry_fee": 400, "best_time": "Jun-Sep", "desc": "One of India's tallest waterfalls, reached via a jungle jeep safari through a wildlife sanctuary."},
+        {"name": "Anjuna Flea Market", "sentiments": ["shopping", "nightlife"], "budget": "low", "entry_fee": 0, "best_time": "Nov-Mar", "desc": "Famous flea market for handicrafts, clothes and live music right by the beach."},
+        {"name": "Chapora Fort", "sentiments": ["adventure", "romantic"], "budget": "low", "entry_fee": 0, "best_time": "Oct-Mar", "desc": "Hilltop fort overlooking the Chapora river, made famous by a popular Bollywood film."},
+        {"name": "Se Cathedral", "sentiments": ["spiritual", "cultural"], "budget": "low", "entry_fee": 0, "best_time": "Year-round", "desc": "One of Asia's largest churches, known for its Golden Bell and colonial architecture."},
+        {"name": "Palolem Beach", "sentiments": ["relaxing", "romantic"], "budget": "medium", "entry_fee": 0, "best_time": "Nov-Feb", "desc": "A calmer, crescent-shaped beach in South Goa known for silent parties and dolphin trips."},
+        {"name": "Mandovi River Casino Cruise", "sentiments": ["nightlife", "family"], "budget": "high", "entry_fee": 1500, "best_time": "Year-round", "desc": "Floating casinos on the Mandovi river offering gaming, dinner and live entertainment."}
+      ],
+      "transport": [
+        {"mode": "Flight", "price_per_person": 4500, "duration_hours": 2},
+        {"mode": "Train", "price_per_person": 1200, "duration_hours": 14},
+        {"mode": "Bus", "price_per_person": 900, "duration_hours": 16},
+        {"mode": "Private Cab", "price_per_vehicle": 6000, "capacity": 4, "duration_hours": 12}
+      ],
+      "local_transport": [
+        {"mode": "Bike Rental", "price_per_day": 400, "capacity": 2},
+        {"mode": "Car Rental (self-drive)", "price_per_day": 2000, "capacity": 4},
+        {"mode": "Taxi / Cab (with driver)", "price_per_day": 1800, "capacity": 4},
+        {"mode": "Private Driver with Car", "price_per_day": 2800, "capacity": 4}
+      ],
+      "stay": [
+        {"name": "Zostel Goa", "type": "Budget", "price_per_night": 900},
+        {"name": "Ginger Goa", "type": "Mid-range", "price_per_night": 3200},
+        {"name": "Taj Fort Aguada Resort", "type": "Luxury", "price_per_night": 12000}
+      ],
+      "food": {
+        "dishes": ["Goan Fish Curry Rice", "Bebinca", "Prawn Balchao", "Pork Vindaloo"],
+        "spots": ["Britto's, Baga Beach", "Vinayak Family Restaurant, Anjuna", "Gunpowder, Assagao"]
+      }
+    },
+    "manali": {
+      "title": "Manali",
+      "weather_city": "Manali,IN",
+      "places": [
+        {"name": "Solang Valley", "sentiments": ["adventure", "nature"], "budget": "medium", "entry_fee": 0, "best_time": "May-Jun, Dec-Feb", "desc": "Adventure hub for paragliding, zorbing and skiing, framed by snow-capped peaks."},
+        {"name": "Rohtang Pass", "sentiments": ["adventure", "nature"], "budget": "medium", "entry_fee": 550, "best_time": "May-Oct", "desc": "High-altitude mountain pass with snow activities; needs an entry permit."},
+        {"name": "Hadimba Temple", "sentiments": ["spiritual", "cultural"], "budget": "low", "entry_fee": 0, "best_time": "Year-round", "desc": "A wooden cave temple set inside a cedar forest, dedicated to Hidimba Devi."},
+        {"name": "Old Manali", "sentiments": ["nightlife", "shopping"], "budget": "low", "entry_fee": 0, "best_time": "Mar-Jun", "desc": "A laid-back village across the river known for cafes, live music and boutique shopping."},
+        {"name": "Manikaran Sahib", "sentiments": ["spiritual"], "budget": "low", "entry_fee": 0, "best_time": "Year-round", "desc": "A Sikh-Hindu pilgrimage site famous for its natural hot springs and free community kitchen."},
+        {"name": "Vashisht Hot Springs", "sentiments": ["relaxing", "spiritual"], "budget": "low", "entry_fee": 0, "best_time": "Year-round", "desc": "Natural sulfur hot water springs beside an ancient temple, popular for a relaxing soak."},
+        {"name": "Jogini Waterfall", "sentiments": ["nature", "adventure"], "budget": "low", "entry_fee": 0, "best_time": "Mar-Jun", "desc": "A scenic waterfall reached via a moderate hike from Vashisht village."},
+        {"name": "Mall Road", "sentiments": ["shopping", "family"], "budget": "low", "entry_fee": 0, "best_time": "Year-round", "desc": "Manali's main pedestrian street lined with shops, cafes and street food stalls."},
+        {"name": "Beas River Rafting", "sentiments": ["adventure", "nature"], "budget": "medium", "entry_fee": 800, "best_time": "Apr-Jun", "desc": "River rafting stretch along the Beas River, popular for a half-day adventure."},
+        {"name": "Kasol", "sentiments": ["nature", "romantic"], "budget": "medium", "entry_fee": 0, "best_time": "Mar-Jun", "desc": "A riverside village near Manali known for trekking trails and scenic campsites."}
+      ],
+      "transport": [
+        {"mode": "Flight (to Bhuntar/Kullu)", "price_per_person": 6000, "duration_hours": 1.5},
+        {"mode": "Train + Road (via Chandigarh)", "price_per_person": 1500, "duration_hours": 10},
+        {"mode": "Bus", "price_per_person": 1100, "duration_hours": 14},
+        {"mode": "Private Cab", "price_per_vehicle": 8000, "capacity": 4, "duration_hours": 12}
+      ],
+      "local_transport": [
+        {"mode": "Bike Rental", "price_per_day": 500, "capacity": 2},
+        {"mode": "Car Rental (self-drive)", "price_per_day": 2200, "capacity": 4},
+        {"mode": "Taxi / Cab (with driver)", "price_per_day": 2000, "capacity": 4},
+        {"mode": "Private Driver with Car", "price_per_day": 3000, "capacity": 4}
+      ],
+      "stay": [
+        {"name": "Zostel Manali", "type": "Budget", "price_per_night": 800},
+        {"name": "Snow Valley Resorts", "type": "Mid-range", "price_per_night": 3000},
+        {"name": "The Himalayan", "type": "Luxury", "price_per_night": 9000}
+      ],
+      "food": {
+        "dishes": ["Siddu", "Trout Fish Fry", "Himachali Dham (thali)", "Chana Madra"],
+        "spots": ["Johnson's Cafe, Old Manali", "Cafe 1947, Old Manali", "Renaissance Restaurant, Mall Road"]
+      }
+    }
+  }
+}

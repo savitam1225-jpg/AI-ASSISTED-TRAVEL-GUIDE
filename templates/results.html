@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}{{ plan.destination_title }} Plan{% endblock %}
+{% block content %}
+  <h1>Your {{ plan.destination_title }} plan</h1>
+  <p class="muted">
+    Mood: {{ plan.sentiment|capitalize if plan.sentiment else "Any" }} &middot;
+    Budget: {{ plan.budget_tier|capitalize }} &middot;
+    {{ plan.people }} people &middot; {{ plan.nights }} nights
+  </p>
+
+  <section class="summary-bar">
+    <div class="summary-item">
+      <span class="label">Estimated total budget</span>
+      <span class="value">Rs {{ "{:,}".format(plan.budget.total) }}</span>
+    </div>
+    {% if plan.weather %}
+      <div class="summary-item">
+        <span class="label">Weather now</span>
+        <span class="value">{{ plan.weather.temp }}&deg;C, {{ plan.weather.description }}</span>
+      </div>
+    {% else %}
+      <div class="summary-item">
+        <span class="label">Weather</span>
+        <span class="value muted">Add OPENWEATHER_API_KEY to enable</span>
+      </div>
+    {% endif %}
+    <a href="{{ url_for('download_plan') }}" class="btn-secondary">Download plan (PDF)</a>
+  </section>
+
+  <h2>Places matched to your mood</h2>
+  <div class="place-grid">
+    {% for place in plan.places %}
+      <div class="place-card">
+        <h3>{{ place.name }}</h3>
+        <p class="muted">{{ place.sentiments|join(", ")|capitalize }} &middot; {{ place.budget|capitalize }} budget</p>
+        <p>{{ place.desc }}</p>
+        <p class="small">Best time: {{ place.best_time }} &middot; Entry: {% if place.entry_fee %}Rs {{ place.entry_fee }}{% else %}Free{% endif %}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <h2>How to get there</h2>
+  <table class="data-table">
+    <tr><th>Mode</th><th>Duration</th><th>Est. cost (your group)</th></tr>
+    {% for t in plan.budget.transport_options %}
+      <tr class="{{ 'highlight' if t.mode == plan.budget.recommended_transport.mode else '' }}">
+        <td>{{ t.mode }}{% if t.mode == plan.budget.recommended_transport.mode %} <span class="tag">Recommended</span>{% endif %}</td>
+        <td>{{ t.duration_hours }} hrs</td>
+        <td>Rs {{ "{:,}".format(t.total_cost) }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <h2>Getting around {{ plan.destination_title }}</h2>
+  <p>
+    For {{ plan.people }} people on a {{ plan.budget_tier }} budget, we suggest
+    <strong>{{ plan.budget.local_transport.mode }}</strong>
+    ({{ plan.budget.local_transport.vehicles_needed }} needed) -
+    Rs {{ "{:,}".format(plan.budget.local_transport.total_cost) }} for the trip.
+  </p>
+
+  <h2>Where to stay</h2>
+  <table class="data-table">
+    <tr><th>Hotel</th><th>Type</th><th>Price / night</th><th>Est. total ({{ plan.budget.recommended_stay.rooms }} room{{ 's' if plan.budget.recommended_stay.rooms > 1 else '' }})</th></tr>
+    {% for s in plan.budget.stay_options %}
+      <tr class="{{ 'highlight' if s.name == plan.budget.recommended_stay.name else '' }}">
+        <td>{{ s.name }}{% if s.name == plan.budget.recommended_stay.name %} <span class="tag">Recommended</span>{% endif %}</td>
+        <td>{{ s.type }}</td>
+        <td>Rs {{ s.price_per_night }}</td>
+        <td>Rs {{ "{:,}".format(s.total_cost) }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <h2>Food to try</h2>
+  <p><strong>Dishes:</strong> {{ plan.food.dishes|join(", ") }}</p>
+  <p><strong>Where:</strong> {{ plan.food.spots|join(" &middot; ")|safe }}</p>
+  <p class="muted small">Estimated food cost: Rs {{ plan.budget.food_rate_per_person_per_day }}/person/day &times; {{ plan.people }} people &times; {{ plan.budget.days }} days = Rs {{ "{:,}".format(plan.budget.food_cost) }}</p>
+
+  <h2>Map</h2>
+  <iframe
+    class="map-embed"
+    src="https://www.google.com/maps?q={{ plan.map_query|urlencode }}&output=embed"
+    loading="lazy">
+  </iframe>
+
+  <h2>Ask the travel copilot</h2>
+  <div id="copilot-box">
+    <div id="copilot-log" class="copilot-log"></div>
+    <form id="copilot-form">
+      <input type="text" id="copilot-input" placeholder="e.g. what's the weather like?" autocomplete="off">
+      <button type="submit" class="btn-secondary">Ask</button>
+    </form>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Plan by Destination{% endblock %}
+{% block content %}
+  <h1>Tell us about your trip</h1>
+  <form method="POST" action="{{ url_for('plan_by_destination') }}" class="plan-form">
+    <label>Destination
+      <select name="destination" required>
+        {% for key, dest in destinations.items() %}
+          <option value="{{ key }}">{{ dest.title }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Mood / sentiment
+      <select name="sentiment">
+        <option value="">Any</option>
+        {% for s in sentiments %}
+          <option value="{{ s }}">{{ s|capitalize }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Budget
+      <select name="budget" required>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+    </label>
+
+    <label>Number of people
+      <input type="number" name="people" min="1" value="2" required>
+    </label>
+
+    <label>Nights
+      <input type="number" name="nights" min="1" value="3" required>
+    </label>
+
+    <button type="submit" class="btn-primary">Build my plan</button>
+  </form>
+{% endblock %}

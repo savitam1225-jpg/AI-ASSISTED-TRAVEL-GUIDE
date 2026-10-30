@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+  <h1>Where's the mood taking you?</h1>
+  <p class="muted">Choose how you'd like to plan your trip.</p>
+
+  <div class="choice-grid">
+    <a class="choice-card" href="{{ url_for('plan_by_destination') }}">
+      <h2>I know my destination</h2>
+      <p>Type a destination, tell us your mood and budget, and we'll match places, hotels, food and transport to you.</p>
+    </a>
+    <a class="choice-card" href="{{ url_for('plan_by_sentiment') }}">
+      <h2>Surprise me by mood</h2>
+      <p>Pick a mood and budget - we'll suggest destinations and exact places that fit, across all locations.</p>
+    </a>
+  </div>
+
+  <h3>Destinations currently in the guide</h3>
+  <ul>
+    {% for key, dest in destinations.items() %}
+      <li>{{ dest.title }}</li>
+    {% endfor %}
+  </ul>
+  <p class="muted small">Add more cities by editing <code>data/places.json</code> - no code changes needed.</p>
+{% endblock %}
